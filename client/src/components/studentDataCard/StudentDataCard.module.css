@@ -1,0 +1,48 @@
+/* .container {
+    max-width: 624px;
+    min-width: 530px;
+    padding: 6px;
+    display: grid;
+    grid-template-columns: 50% min-content min-content min-content min-content 1fr max-content;
+    grid-template-rows: min-content 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+      "photo date dash cci comments . ."
+      "photo title title title title title .";
+    border-bottom: 1px solid grey;
+  } */
+.container {
+  display: grid;
+  grid-template-columns: min-content 33% 1fr 1fr 1fr;
+  grid-template-rows: min-content, 1fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+    "avatar name . . expandBtn"
+    "avatar content . . ."
+    "avatar content . . .";
+  padding: 16px;
+  border-bottom: 1px solid lightgrey;
+}
+.avatar {
+  grid-area: avatar;
+  justify-self: center;
+  align-self: center;
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 82px;
+  height: 82px;
+}
+.name {
+  grid-area: name;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.content {
+  grid-area: content;
+}
+.expandBtn {
+  grid-area: expandBtn;
+  justify-self: end;
+  height: 24px;
+  width: 24px;
+}
