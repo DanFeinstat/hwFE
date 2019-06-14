@@ -27,6 +27,7 @@ function App() {
         const averageGrade = findAverage(student.grades);
         return (
           <StudentDataCard
+            key={index}
             img={student.pic}
             firstName={student.firstName}
             lastName={student.lastName}
