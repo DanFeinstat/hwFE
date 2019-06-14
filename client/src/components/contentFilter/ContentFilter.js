@@ -5,7 +5,7 @@ const ContentFilter = ({ filterFunction }) => {
   return (
     <input
       onChange={e => {
-        filterFunction(e.target.value.toLowerCase());
+        filterFunction(e.target.value.toLowerCase().trim());
       }}
     />
   );
