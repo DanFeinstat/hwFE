@@ -29,7 +29,7 @@ function App() {
   return (
     <div className={styles.App}>
       <div className={styles.contentContainer}>
-        <ContentFilter filterFunction={nameFilterFunction} />
+        <ContentFilter filterFunction={nameFilterFunction} type={`name`} />
         {nameFilter.map((student, index) => {
           function findAverage(array) {
             let sum = 0;
