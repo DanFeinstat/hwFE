@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import TagForm from "../tagForm/TagForm";
+import Tag from "../tag/Tag";
 import styles from "./StudentDataCard.module.css";
 
 const UserDataCard = ({
+  index,
   img,
   firstName,
   lastName,
@@ -10,6 +13,8 @@ const UserDataCard = ({
   skill,
   averageGrade,
   grades,
+  tags,
+  addTag,
 }) => {
   const [showGrades, setShowGrades] = useState(false);
   return (
@@ -25,11 +30,22 @@ const UserDataCard = ({
           <div>
             {grades.map((grade, index) => {
               return (
-                <div>
+                <div key={index.toString()}>
                   test{index}: {grade}%
                 </div>
               );
             })}
+            {tags.length > 0
+              ? tags.map((tag, index) => {
+                  return (
+                    <Tag key={index.toString()} tag={tag} />
+                    // <div className={styles.tag} key={index.toString()}>
+                    //   {tag}
+                    // </div>
+                  );
+                })
+              : null}
+            <TagForm index={index} addTag={addTag} />
           </div>
         )}
       </div>

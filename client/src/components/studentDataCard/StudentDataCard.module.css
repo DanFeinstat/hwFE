@@ -1,16 +1,3 @@
-/* .container {
-    max-width: 624px;
-    min-width: 530px;
-    padding: 6px;
-    display: grid;
-    grid-template-columns: 50% min-content min-content min-content min-content 1fr max-content;
-    grid-template-rows: min-content 1fr;
-    grid-gap: 10px;
-    grid-template-areas:
-      "photo date dash cci comments . ."
-      "photo title title title title title .";
-    border-bottom: 1px solid grey;
-  } */
 .container {
   display: grid;
   grid-template-columns: min-content 33% 1fr 1fr 1fr;
@@ -45,4 +32,8 @@
   justify-self: end;
   height: 24px;
   width: 24px;
+}
+
+.tagSubmit {
+  display: hidden;
 }

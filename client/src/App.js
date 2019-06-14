@@ -5,7 +5,15 @@ import styles from "./App.module.css";
 
 function App() {
   const [studentData, setStudentData] = useState([]);
-  const [nameFilter, setNameFilter] = useState([]);
+  const [filterContent, setFilterContent] = useState([]);
+
+  const addTag = (str, index) => {
+    const tagForStudentData = [...studentData];
+    tagForStudentData[index].tags.push(str);
+    setStudentData(tagForStudentData);
+  };
+
+  // filter functions for sorting content
   const nameFilterFunction = str => {
     let newNameFilter = [];
     studentData.map(student => {
@@ -14,15 +22,44 @@ function App() {
         newNameFilter.push(student);
       }
     });
-    setNameFilter(newNameFilter);
+    setFilterContent(newNameFilter);
   };
+
+  const tagFilterFunction = str => {
+    if (str) {
+      let newTagFilter = [];
+      filterContent.map(student => {
+        let tagged = false;
+        student.tags.map(tag => {
+          if (tag.includes(str)) {
+            tagged = true;
+          }
+        });
+        if (tagged) {
+          newTagFilter.push(student);
+        }
+      });
+      setFilterContent(newTagFilter);
+    } else {
+      setFilterContent(studentData);
+    }
+  };
+
+  //api call
   async function fetchUrl(url) {
     const response = await fetch(url);
-    const newStudentData = await response.json();
-
-    setStudentData(newStudentData.students);
-    setNameFilter(newStudentData.students);
+    const json = await response.json();
+    let newStudentData = [];
+    json.students.map(student => {
+      let addTags = student;
+      addTags.tags = [];
+      newStudentData.push(addTags);
+    });
+    setStudentData(newStudentData);
+    setFilterContent(newStudentData);
   }
+
+  //hooks version of lifecycle hooks found in class components
   useEffect(() => {
     fetchUrl(`https://www.hatchways.io/api/assessment/students`);
   }, []);
@@ -30,7 +67,8 @@ function App() {
     <div className={styles.App}>
       <div className={styles.contentContainer}>
         <ContentFilter filterFunction={nameFilterFunction} type={`name`} />
-        {nameFilter.map((student, index) => {
+        <ContentFilter filterFunction={tagFilterFunction} type={`tag`} />
+        {filterContent.map((student, index) => {
           function findAverage(array) {
             let sum = 0;
             for (let i = 0; i < array.length; i++) {
@@ -42,7 +80,8 @@ function App() {
           const averageGrade = findAverage(student.grades);
           return (
             <StudentDataCard
-              key={index}
+              key={index.toString()}
+              index={index}
               img={student.pic}
               firstName={student.firstName}
               lastName={student.lastName}
@@ -51,6 +90,8 @@ function App() {
               skill={student.skill}
               grades={student.grades}
               averageGrade={averageGrade}
+              tags={student.tags}
+              addTag={addTag}
             />
           );
         })}
