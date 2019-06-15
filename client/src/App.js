@@ -2,12 +2,21 @@ import React, { useState, useEffect } from "react";
 import StudentDataCard from "./components/studentDataCard/StudentDataCard";
 import ContentFilter from "./components/contentFilter/ContentFilter";
 import styles from "./App.module.css";
+//Chose to use modular css to make the css more obviously tied to the relevant components
 
 function App() {
+  //We're using state in this app instead of redux or useReducer+useContext
+  //This is because state management is simple in this app
+  //and we have a relatively flat component structure
   const [studentData, setStudentData] = useState([]);
   const [filterContent, setFilterContent] = useState([]);
   const [nameFilter, setNameFilter] = useState([]);
   const [tagFilter, setTagFilter] = useState([]);
+  // we use nameFilter and tagFilter as references so that
+  //both filters can be active simultaneously.
+  //If we were to scale this with many more filter options
+  //I would consider finding a different solution or
+  //building out a library for it.
 
   const addTag = (str, index) => {
     const tagForStudentData = [...studentData];
@@ -85,7 +94,6 @@ function App() {
     setTagFilter(newStudentData);
   }
 
-  //hooks version of lifecycle hooks found in class components
   useEffect(() => {
     fetchUrl(`https://www.hatchways.io/api/assessment/students`);
   }, []);

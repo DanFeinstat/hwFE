@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Icons.module.css";
 
+//please note:  I did not write the pathing myself.  I took an svg icon and converted it to react.
 const CloseIcon = ({ setShowGrades, showGrades }) => {
   return (
     <svg

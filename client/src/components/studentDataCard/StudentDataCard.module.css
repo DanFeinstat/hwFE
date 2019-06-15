@@ -50,6 +50,7 @@
   margin-top: 10px;
 }
 
+/* reformat the grid for mobile viewership */
 @media only screen and (max-width: 550px) {
   .container {
     text-align: center;

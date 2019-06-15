@@ -61,14 +61,6 @@ const UserDataCard = ({
           showGrades={showGrades}
         />
       )}
-      {/* <button
-        className={styles.expandBtn}
-        onClick={() => {
-          setShowGrades(!showGrades);
-        }}
-      >
-        {showGrades ? `-` : `+`}
-      </button> */}
     </div>
   );
 };
