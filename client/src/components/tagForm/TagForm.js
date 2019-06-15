@@ -8,6 +8,7 @@ const TagForm = ({ addTag, index }) => {
       onSubmit={e => {
         e.preventDefault();
         addTag(newTag, index);
+        setNewTag("");
       }}
     >
       <input
