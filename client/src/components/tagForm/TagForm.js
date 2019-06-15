@@ -11,6 +11,7 @@ const TagForm = ({ addTag, index }) => {
       }}
     >
       <input
+        className={styles.input}
         placeholder="Add a tag"
         type="text"
         value={newTag}

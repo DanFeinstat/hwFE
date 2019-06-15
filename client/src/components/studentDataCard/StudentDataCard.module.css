@@ -4,20 +4,23 @@
   grid-template-rows: min-content, 1fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
-    "avatar name . . expandBtn"
-    "avatar content . . ."
-    "avatar content . . .";
+    "avatar name name name expandBtn"
+    "avatar content content . ."
+    ". content content . .";
   padding: 16px;
   border-bottom: 1px solid lightgrey;
 }
+
 .avatar {
   grid-area: avatar;
   justify-self: center;
-  align-self: center;
+  align-self: start;
   border-radius: 50%;
-  border: 1px solid black;
-  width: 82px;
-  height: 82px;
+  border: 1px solid lightgrey;
+  width: 84px;
+  height: 84px;
+  margin-top: 12px;
+  margin-right: 6px;
 }
 .name {
   grid-area: name;
@@ -26,6 +29,7 @@
 }
 .content {
   grid-area: content;
+  margin-left: 6px;
 }
 .expandBtn {
   grid-area: expandBtn;
@@ -36,4 +40,8 @@
 
 .tagSubmit {
   display: hidden;
+}
+
+.extendedContent {
+  margin-top: 10px;
 }

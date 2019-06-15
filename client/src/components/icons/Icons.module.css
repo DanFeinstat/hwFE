@@ -1,0 +1,7 @@
+.expandBtn {
+  grid-area: expandBtn;
+  justify-self: end;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
