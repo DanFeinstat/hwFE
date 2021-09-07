@@ -1,6 +1,6 @@
-# hatchwaysFE
+# hwFE
 
-hatchways coding challenge
+hw coding challenge
 
 ## About
 
